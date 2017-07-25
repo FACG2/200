@@ -1,0 +1,10 @@
+/*
+Main Color :
+*/
+.container{
+  max-width: 900px;
+  width: 100%;
+}
+.mainColor{
+  color : red;
+}
