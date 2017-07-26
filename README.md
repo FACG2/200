@@ -3,10 +3,7 @@
 > :bowtie: Done by: Walid, Mahmoud , Hana, Ahmed :bowtie:
 
 
-
-```
-Actor’s Movies API: Simple website that allows the user to find out some actor’s details by using three different API’s, also it's responsive and easy to use.
-```
+ > Actor’s Movies API: Simple website that allows the user to find out some actor’s details by using three different API’s, also it's responsive and easy to use.
 
 
 
@@ -43,7 +40,8 @@ Actor’s Movies API: Simple website that allows the user to find out some actor
 4) design the website: **Ahmed and Walid**
 
 ## How to use?
-Enter the linke [here](https://facg2.github.io/200/)
+
+Enter the link [here](https://facg2.github.io/200/)
 ---
 THANKS! :heart:
 
