@@ -1,3 +1,21 @@
+var test = require('tape');
+var getActor = require('./index');
+
+test('Example test', function(t) {
+  
+
+  var result = getActor("selena gomez");
+  var expected = [{
+    id: 1,
+    description: "make smoothie out of things that should really be cooked",
+    state: false,
+  }];
+  t.deepEqual(result, expected, 'equal');
+  t.end();
+});
+
+
+
 // var test = require('tape');
 // var todoFunctions = require('../logic');
 //
