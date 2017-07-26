@@ -2,13 +2,20 @@
 (function dom() {
     var searchForm = document.getElementById('main');
     var body = document.getElementsByTagName('body')[0];
+    var actorAvatar = document.getElementsByClassName('actorImg')[0];
     if (searchForm) {
     searchForm.addEventListener('submit', function(event){
       event.preventDefault();
-      document.getElementsByTagName('body')[0].classList.add('goTop');
+      body.classList.add('goTop');
       body.classList.remove('goCenter');
       var actorName = event.target.firstElementChild.value;
       event.target.firstElementChild.value = "";
+      var actor = getActor(actorName);
+      console.log(actor);
+      console.log(actor.profile);
+      document.getElementsByClassName('actorName')[0].textContent = actorName;
+      var age = getAge(actor.profile);
+      document.getElementById('lookLike')= "He looks "+ age +" years old";
     });
   }
 })();
