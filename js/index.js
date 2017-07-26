@@ -9,13 +9,14 @@
       body.classList.add('goTop');
       body.classList.remove('goCenter');
       var actorName = event.target.firstElementChild.value;
-      event.target.firstElementChild.value = "";
+      // event.target.firstElementChild.value = "";
 
       setTimeout(function(){
           getActor(actorName, function(actor) {
             document.getElementsByClassName('actorName')[0].textContent = actorName;
             actorAvatar.setAttribute("src", actor.profile);
-             console.log(actor.profile);
+             console.log(actor);
+             document.getElementById('myMovies').innerHTML = addMoviesDOM(actor.films);
              getAge(actor.profile , function(age){
                console.log("this is me :  ",age);
                 document.getElementById('lookLike').textContent= "He looks "+ age +" years old";
@@ -26,6 +27,21 @@
     });
   }
 })();
+
+/*Return the DOM as a string*/
+function addMoviesDOM(films) {
+  var myDOM = '';
+  films.forEach(function(film) {
+    myDOM += '<div class="filmContent">'+
+                '<img class="content-img" src="'+film.avater+'" alt="'+film.filmName+'">'+
+                '<div class="contentText">'+
+                  '<p id="overView">'+film.overview+'</p>'+
+                  '<a href = "'+film.website+'" id="overView">'+film.website+'</a>'+
+                '</div>'+
+            '</div>';
+  });
+  return myDOM;
+}
 
 //getActor for Hana
 function getActor(actorName , fn) {
