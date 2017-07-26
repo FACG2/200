@@ -1,6 +1,16 @@
-function dom() {
-
-}
+//DOM
+(function dom() {
+    var searchForm = document.getElementById('main');
+    if (searchForm) {
+    searchForm.addEventListener('submit', function(event){
+      event.preventDefault();
+      document.getElementById('myNav').classList.add('goTop');
+      document.getElementById('myNav').classList.remove('goCenter')
+      var actorName = event.target.firstElementChild.value;
+      event.target.firstElementChild.value = "";
+    });
+  }
+})();
 
 //getActor for Hana
 function getActor(actorName) {
@@ -9,7 +19,6 @@ function getActor(actorName) {
 
 // getGif for Mahmoud
 function getGif(movieName,fn) {
-
   var result = [];
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {

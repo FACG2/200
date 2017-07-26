@@ -17,3 +17,8 @@ body{
   display: flex;
   justify-content: center;
 }
+/*Nav Search*/
+.goCenter{
+  margin-top: 20vh;
+  color:white;
+}
