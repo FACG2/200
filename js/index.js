@@ -1,11 +1,12 @@
 //DOM
 (function dom() {
     var searchForm = document.getElementById('main');
+    var body = document.getElementsByTagName('body')[0];
     if (searchForm) {
     searchForm.addEventListener('submit', function(event){
       event.preventDefault();
-      document.getElementById('myNav').classList.add('goTop');
-      document.getElementById('myNav').classList.remove('goCenter')
+      document.getElementsByTagName('body')[0].classList.add('goTop');
+      body.classList.remove('goCenter');
       var actorName = event.target.firstElementChild.value;
       event.target.firstElementChild.value = "";
     });

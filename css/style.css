@@ -8,10 +8,11 @@ Main Color : red;
 }
 
 
-/* .container {
-    max-width: 500px;
+ .container {
+    max-width: 1100px;
     width: 100%;
-} */
+    margin: 0 auto;
+}
 
 .mainColor {
     color: red;
@@ -19,6 +20,52 @@ Main Color : red;
 
 header {
     display: flex;
+    width: 100%;
+}
+body{
+  transition: 1s all;
+  background-color: #336E7B;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* My Nav Search */
+ .goCenter .container2 , .goCenter footer{
+  visibility: hidden;
+}
+header{
+  color: white;
+  text-align: center;
+  margin-top: 20vh;
+}
+header h1{
+  margin: 10px;
+  font-size: 40px;
+}
+header h1 span{
+  color:red;
+  font-weight: 600;
+}
+/*After Search*/
+
+.goTop header{
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 0;
+  transition: all 1s;
+}
+.goTop header h1{
+  margin: 5px;
+  font-size: 20px;
+  float:left;
+}
+.goTop header h1 span{
+  color:red;
+  font-weight: 600;
+}
+.goTop .addBtn , .goTop input{
+  font-size: 19px;
 }
 
 input {
@@ -43,20 +90,14 @@ input {
 .addBtn:hover {
     background-color: #81CFE0;
 }
-
-body {
-    background-color: #336E7B;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 2%;
-}
-
 .container2 {
     display: flex;
     flex-direction: row-reverse;
     margin: 2%;
     border: 2px solid black;
+    transition: all 1s;
+    width:100%;
+    max-width: 1100px;
 }
 
 .content {
