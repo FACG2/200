@@ -24,16 +24,21 @@
 function getActor(actorName) {
   var xhr = new XMLHttpRequest();
   var out = {};
+  var objjj = {};
   var url = "https://api.themoviedb.org/3/search/person?api_key=814abd6ddb1281b2759956e55063ae9e&query=" + actorName.replace(/ /g, '%20');
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && xhr.status == 200) {
       var result = JSON.parse(xhr.responseText);
+// console.log("heba", result);
       var known = {};
+      if (result.results.length>0){
+        out.status=1;
       result.results.map(function(myData) {
         known = myData.known_for;
         out.profile = "https://image.tmdb.org/t/p/w640" + myData.profile_path;
+        console.log("hana",myData.profile_path);
       })
-      var objjj = {};
+
       out.films = known.map(function(myData) {
         objjj = {};
         objjj.avater = "https://image.tmdb.org/t/p/w640" + myData.poster_path;
@@ -43,9 +48,14 @@ function getActor(actorName) {
         return objjj;
       })
     }
+else {
+  out.status=0;
+}
+  }
   };
   xhr.open("GET", url, true);
   xhr.send();
+  console.log(out);
   return out;
 }
 
@@ -95,6 +105,9 @@ function getGif(movieName,fn) {
   xhr.open("GET", "http://api.giphy.com/v1/gifs/search?q="+ movieName.replace(/ /g , '+') + "&api_key=57d2a87757c84c429f37713f2339c68a&limit=4", true);
   xhr.send();
 }
-
+getActor("selena gomaz");
+// console.log(getActor("selena gomaz"));
+//
+// module.exports = getActor;
 // profileImg = "https://image.tmdb.org/t/p/w640/iD7KizfexCV7TlujWbxFI6AJeei.jpg";
 // getAge(profileImg);
