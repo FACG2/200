@@ -21,8 +21,19 @@
               var actorAvatar = document.getElementsByClassName('actorImg')[0];
               document.getElementsByClassName('actorName')[0].textContent = actorName;
               actorAvatar.setAttribute("src", actor.profile);
-               console.log(actor);
                document.getElementById('myMovies').innerHTML = addMoviesDOM(actor.films);
+               /*Add gifs*/
+               var myGifsDivs = document.getElementsByClassName("gifs");
+               for (let i = 0; i < myGifsDivs.length; i++) {
+                   getGif( actor.films[i].filmName , function(gifs){
+                     console.log(gifs);
+                     gifs.forEach(function(myGif) {
+                       myGifsDivs[i].innerHTML += '<img src="'+ myGif +'" alt="">';
+
+                     });
+                   });
+              }
+               /*Add Age*/
                var myAge = document.getElementById('lookLike');
                myAge.classList.remove('bigger');
                myAge.innerHTML = '<p>Loading .... <span class="retry">retry</span></p>'
@@ -71,6 +82,8 @@ function addMoviesDOM(films) {
                 '<div class="contentText">'+
                   '<p id="overView">'+film.overview+'</p>'+
                   '<a href = "'+film.website+'" id="overView">'+film.website+'</a>'+
+                '</div>'+
+                '<div class = "gifs">'+
                 '</div>'+
             '</div>';
   });
@@ -133,19 +146,19 @@ function getAge(profileImg , fn) {
 }
 // getGif for Mahmoud
 function getGif(movieName,fn) {
-  var result = [];
+  var myImgs = [];
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       var myJSONRemote = JSON.parse(xhr.responseText);
       myJSONRemote.data.map(function(myData) {
-        myImgs.push(myData.embed_url);
+        myImgs.push("https://media.giphy.com/media/"+ myData.id + "/200w.webp");
       });
       fn(myImgs);
       return myImgs;
     }
   };
-  xhr.open("GET", "http://api.giphy.com/v1/gifs/search?q="+ movieName.replace(/ /g , '+') + "&api_key=57d2a87757c84c429f37713f2339c68a&limit=4", true);
+  xhr.open("GET", "http://api.giphy.com/v1/gifs/search?q="+ movieName.replace(/ /g , '+') + "&api_key=57d2a87757c84c429f37713f2339c68a&limit=3", true);
   xhr.send();
 }
 // console.log(getActor("selena gomaz"));

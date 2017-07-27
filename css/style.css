@@ -108,7 +108,7 @@ body {
 
 .content {
     background-color: #F2F1EF;
-    flex: 3;
+    flex: 4;
     padding: 2%;
     padding-bottom: 2%;
     color: white;
@@ -124,6 +124,7 @@ body {
     border: 2px solid black;
     margin-bottom: 1%;
     background-color: white;
+    overflow: hidden;
 }
 
 aside {
@@ -216,5 +217,20 @@ footer {
   }
   .actorImg{
     width: 20%;
+  }
+
+  .filmContent{
+    flex-direction: column;
+  }
+  .content-img{
+    width: auto;
+    margin: 0 auto;
+  }
+  .container2{
+    border: none;
+  }
+  .gifs img{
+    float:left;
+    width:33.33333%;
   }
 }
