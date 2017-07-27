@@ -177,10 +177,14 @@ aside p{
 }
 .retry{
   cursor: pointer;
-  color : red;
+  color : black;
+  background: white;
+  padding: 5px;
+  border-radius: 50%;
 }
 .retry:hover{
-  color: blue;
+  color: white;
+  background: black;
 }
 #actorNotFount{
   text-align: center;
@@ -232,5 +236,8 @@ footer {
   .gifs img{
     float:left;
     width:33.33333%;
+  }
+  #lookLike{
+    padding-left: 10px;
   }
 }
