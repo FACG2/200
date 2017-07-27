@@ -152,7 +152,7 @@ function getGif(movieName,fn) {
     if (this.readyState == 4 && this.status == 200) {
       var myJSONRemote = JSON.parse(xhr.responseText);
       myJSONRemote.data.map(function(myData) {
-        myImgs.push("https://media.giphy.com/media/"+ myData.id + "/200w.webp");
+        myImgs.push(myData.images.fixed_height_small.url);
       });
       fn(myImgs);
       return myImgs;
