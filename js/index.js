@@ -158,7 +158,7 @@ function getGif(movieName,fn) {
       return myImgs;
     }
   };
-  xhr.open("GET", "http://api.giphy.com/v1/gifs/search?q="+ movieName.replace(/ /g , '+') + "&api_key=57d2a87757c84c429f37713f2339c68a&limit=3", true);
+  xhr.open("GET", "https://api.giphy.com/v1/gifs/search?q="+ movieName.replace(/ /g , '+') + "&api_key=57d2a87757c84c429f37713f2339c68a&limit=3", true);
   xhr.send();
 }
 // console.log(getActor("selena gomaz"));
