@@ -169,8 +169,25 @@ hr {
 .actorName {
     font-family: 'Acme', sans-serif;
     font-size: 30px;
+    text-transform: capitalize;
 }
-
+aside p{
+  transition: all 1s;
+}
+.retry{
+  cursor: pointer;
+  color : red;
+}
+.retry:hover{
+  color: blue;
+}
+.bigger{
+  font-size: 2.5vw;
+  color: #8c1010;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+}
 footer {
     width: 100%;
     background-color: white;

@@ -2,7 +2,8 @@
 (function dom() {
     var searchForm = document.getElementById('main');
     var body = document.getElementsByTagName('body')[0];
-    var actorAvatar = document.getElementsByClassName('actorImg')[0];
+
+    var mainContent = document.getElementsByClassName('container2')[0];
     if (searchForm) {
     searchForm.addEventListener('submit', function(event){
       event.preventDefault();
@@ -10,17 +11,35 @@
       body.classList.remove('goCenter');
       var actorName = event.target.firstElementChild.value;
       // event.target.firstElementChild.value = "";
-
+      //mainContent.innerHTML = '<div class="loading">Loading .......</div>';
+      mainContent.innerHTML = '<p id="actorNotFount">'+ actorName +' Not Found ! , Are you sure you using the right spilling :3</p>'+
+                              '<br/><p></p>';
       setTimeout(function(){
           getActor(actorName, function(actor) {
-            document.getElementsByClassName('actorName')[0].textContent = actorName;
-            actorAvatar.setAttribute("src", actor.profile);
-             console.log(actor);
-             document.getElementById('myMovies').innerHTML = addMoviesDOM(actor.films);
-             getAge(actor.profile , function(age){
-               console.log("this is me :  ",age);
-                document.getElementById('lookLike').textContent= "He looks "+ age +" years old";
-             });
+            if (actor.status == 1) {
+              mainContent.innerHTML = empty();
+              var actorAvatar = document.getElementsByClassName('actorImg')[0];
+              document.getElementsByClassName('actorName')[0].textContent = actorName;
+              actorAvatar.setAttribute("src", actor.profile);
+               console.log(actor);
+               document.getElementById('myMovies').innerHTML = addMoviesDOM(actor.films);
+               var myAge = document.getElementById('lookLike');
+               myAge.classList.remove('bigger');
+               myAge.innerHTML = '<p>Loading .... <span class="retry">retry</span></p>'
+               var loadingAge = function() {
+                 getAge(actor.profile , function(age){
+                   console.log("this is me :  ",age);
+                   myAge.classList.add('bigger');
+                   myAge.textContent= actorName + " looks "+ age +" years old :D";
+                 });
+               }
+               loadingAge();
+               document.getElementsByClassName('retry')[0].addEventListener('click', loadingAge);
+            }else {
+              mainContent.innerHTML = '<p id="actorNotFount">'+ actorName +' Not Found ! , Are you sure you using the right spilling :3</p>'+
+                                      '<br/><p></p>';
+            }
+
           });
           //
       }, 0);
@@ -28,6 +47,21 @@
   }
 })();
 
+/*Return empty content*/
+function empty() {
+  var myString = '';
+  myString += '<div id="myMovies" class="content">'+
+              '</div>'+
+              '<aside>'+
+                '<img class="actorImg" src="" alt="">'+
+                '<hr width="200px">'+
+                '<br>'+
+                '<h1 class="actorName"></h1>'+
+                '<br>'+
+                '<p id="lookLike"></p>'+
+              '</aside>';
+    return myString;
+}
 /*Return the DOM as a string*/
 function addMoviesDOM(films) {
   var myDOM = '';
