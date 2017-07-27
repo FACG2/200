@@ -203,3 +203,18 @@ footer {
     align-items: center;
     text-align: center;
 }
+@media (max-width :700px) {
+  .container2{
+    flex-direction: column-reverse;
+  }
+  aside{
+    flex-direction: row;
+    width: 80%;
+  }
+  aside hr{
+    display: none;
+  }
+  .actorImg{
+    width: 20%;
+  }
+}
